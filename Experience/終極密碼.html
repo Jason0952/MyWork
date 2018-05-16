@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <style>
+        .bton {
+            border-radius: 600px;
+            font-size: 20px;
+            padding: 25px 36px;
+        }
+    </style>
+    <title>終極密碼</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12" style="text-align:center">
+                <h1>終極密碼</h1>
+                <div class="form-group">
+                    <label for=""></label>
+                    <textarea class="form-control" name="" id="formtext" rows="3" style="font-size:50px;text-align:center"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">1</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">2</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">3</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">4</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">5</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">6</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">7</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">8</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle" style="margin-left:20em">9</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" id="clear" class="bton btn-primary btn-circle btn-xl" style="margin-left:20em">清除</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="bton btn-primary btn-circle btn-xl" style="margin-left:20em">0</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" id="confirm" class="bton btn-primary btn-circle btn-xl" style="margin-left:20em">確認</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="text" id="userans" class="form-control" placeholder="請按按鈕選擇數字" aria-describedby="helpId">
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        var ans = Math.floor(Math.random() * 100);
+
+        //使用者選擇數字按鈕
+        $("button").on('click',function(){
+            $("#userans").val($("#userans").val() + this.innerText);
+        });
+
+
+        //清除
+        $("#clear").on('click',function () {
+            $("#userans").val("");
+        });
+
+
+        //按下確認與答案去比較
+        var max = 100;
+        var min = 1;
+        var n = 0;
+
+
+        $("#confirm").on('click',function () {
+            n++;
+            if (n > 10) {
+                alert("輸入次數超過10次，次數耗盡!");
+            } else {
+                while (true) {
+                    var useranswer = $("#userans").val();
+                    if (useranswer > 100 || useranswer < 0) {
+                        alert("輸入錯誤，請重新輸入");
+                    } else {
+                        while (useranswer != ans) {
+                            if (useranswer > ans) {
+                                if (useranswer < max) {
+                                    max = useranswer;
+                                    $("#formtext").val(min + "到" + max);
+                                    alert("比答案大");
+                                } else {
+                                    alert("輸入的數字大於最大值");
+                                }
+                                break;
+                            } else if (useranswer < ans) {
+                                if (useranswer > min) {
+                                    min = useranswer;
+                                    $("#formtext").val(min + "到" + max);
+                                    alert("比答案小");
+                                } else {
+                                    alert("輸入的數字小於最小值");
+                                }
+                                break;
+                            }
+                        }
+
+                        while (useranswer == ans) {
+                            max = 100;
+                            min = 1;
+                            alert("正確答案");
+                            break;
+                        }
+
+                        break;
+                    }
+                    document.getElementById("userans").val();
+                }
+            }
+        }); 
+    </script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

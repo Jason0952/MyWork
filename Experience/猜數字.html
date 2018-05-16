@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <p>
+                    <button type="button" id="start" class="btn btn-warning mb-5 btn-lg">開始遊戲</button>
+                </p>
+                <button type="button" id="answer" class="btn btn-warning mb-5 btn-lg" disabled=false>看答案</button>
+                <div class="input-group-prepend ">
+                    <div class="input-group-text border-link bg-link">Input</div>
+                </div>
+                <div class="input-group mb-2">
+
+                    <input type="text" id="input" class="form-control" id="inlineFormInputGroup" placeholder="">
+                </div>
+                <button type="button" id="checkanswer" class="btn btn-warning mb-5 btn-lg" disabled=false>檢查答案</button>
+                <button type="button" id="giveup" class="btn btn-warning mb-5 btn-lg" disabled=false>放棄重來</button>
+            </div>
+            <div class="col">
+                <div class="input-group-prepend ">
+                    <div class="input-group-text border-link bg-link">遊戲歷程</div>
+                </div>
+                <div class="input-group mb-2">
+
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="12"></textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        var aa = '';
+        var answer = [];
+        while (answer.length < 4) {
+            var randomnumber = Math.floor(Math.random() * 9) + 1;
+            if (answer.indexOf(randomnumber) > -1) {
+                continue;
+            }
+            answer[answer.length] = randomnumber;
+            aa += randomnumber;
+        }
+        
+        var correct = false
+        document.getElementById("answer").onclick = function () {
+            var btn = event.srcElement;
+            document.getElementById("exampleFormControlTextarea1").value += aa + "\n";
+
+        }
+
+        document.getElementById("start").onclick = function () {
+
+            var btn = event.srcElement;
+
+            document.getElementById('exampleFormControlTextarea1').value = '';
+            document.getElementById('input').value = '';
+            document.getElementById("checkanswer").disabled = false;
+            document.getElementById("answer").disabled = false;
+            document.getElementById("giveup").disabled = false;
+        }
+
+        document.getElementById("checkanswer").onclick = function () {
+            var btn = event.srcElement;
+            var num = document.getElementById("input").value;
+            var t = num / 1000;
+            var y = (num - (t * 1000)) / 100;
+            var u = (num - (t * 1000 + u * 100)) / 10;
+            var q = num - (t * 1000 + u * 100 + q * 10);
+            num[t, y, u, q];
+            var a = 0;
+            var b = 0;
+
+            for (var i = 0; i < 4; i++) {
+                for (var j = 0; j < 4; j++) {
+                    if (num[i] == answer[i] && i == j) {
+
+
+                        a++;
+                    }
+                    if (num[i] != answer[i] && num[i] == answer[j]) {
+                        b++;
+                    }
+                }
+
+            }
+
+            document.getElementById("exampleFormControlTextarea1").value += a + "A" + b + "B - " + document.getElementById(
+                'input').value + "\n";
+            if (!parseInt(num)) {
+                document.getElementById("exampleFormControlTextarea1").value += "輸入的不是數字喔。\n";
+
+            }
+
+            if (num == aa) {
+
+                document.getElementById("exampleFormControlTextarea1").value += "猜到了，恭喜。\n";
+                correct = true;
+
+
+            }
+            document.getElementById('input').value = '';
+
+        }
+
+        document.getElementById("giveup").onclick = function () {
+            var btn = event.srcElement;
+            location.reload();
+        }
+    </script>
+</body>
+
+</html>
