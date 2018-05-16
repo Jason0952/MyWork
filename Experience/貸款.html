@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>貸款</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mt-5" style="text-align:center">
+                <h1>貸款</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mt-1">
+                <h2>貸款金額:</h2>
+            </div>
+            <div class="col-8 mt-2">
+                <div class="form-group">
+                    <input type="text" class="form-control ml-6" id="typemoney" aria-describedby="helpId" placeholder="請輸入貸款金額">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mt-1">
+                <h2>貸款年份:</h2>
+            </div>
+            <div class="col-8 mt-2">
+                <div class="form-group">
+                    <input type="text" class="form-control ml-6" id="typeyear" aria-describedby="helpId" placeholder="請輸入貸款金額">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mt-1">
+                <h2>年利率:</h2>
+            </div>
+            <div class="col-8 mt-2">
+                <div class="form-group">
+                    <input type="text" class="form-control ml-6" id="typeyearcost" aria-describedby="helpId" placeholder="請輸入貸款金額">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 text-left mt-2" style="margin-left:12em">
+                <button type="button" id="count" class="btn btn-success">計算</button>
+            </div>
+            <div class="col-2 text-right mt-2">
+                <div class="form-group">
+                    <input type="text" id="monthresult" class="form-control" placeholder="每月繳的費用" aria-describedby="helpId" style="margin-right:10em">
+                </div>
+            </div>
+            <div class="col-2 text-right mt-2">
+                <div class="form-group">
+                    <input type="text" id="rateresult" class="form-control" placeholder="每月的利息" aria-describedby="helpId" style="margin-right:10em">
+                </div>
+            </div>
+            <div class="col-3 text-right mt-2">
+                <div class="form-group">
+                    <input type="text" id="allresult" class="form-control" placeholder="總共需要繳交的費用" aria-describedby="helpId" style="margin-right:10em">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var button = document.getElementById("count");
+
+        var result = function (money, year, rate) {
+            var _money = money;
+            var _month = year * 12;
+            var _monthrate = rate / 12;
+            var ratecount = ((Math.pow(1 + _monthrate, _month)) * _monthrate) / ((Math.pow(1 + _monthrate, _month)) - 1)
+
+            this.getmonthpay = function () {
+                return Math.floor(_money * ratecount);
+            }
+
+            this.getallhavepay = function () {
+                return Math.floor(this.getmonthpay() * _month);
+            }
+
+            this.getmonthpayrate = function () {
+                return Math.floor(this.getmonthpay() - (_money / _month));
+            }
+        }
+
+        button.onclick = function () {
+            var money = document.getElementById("typemoney").value;
+            var year = document.getElementById("typeyear").value;
+            var rate = document.getElementById("typeyearcost").value;
+            
+            var count = new result(money, year, rate);
+
+            document.getElementById("monthresult").value = count.getmonthpay();
+            document.getElementById("rateresult").value = count.getmonthpayrate();
+            document.getElementById("allresult").value = count.getallhavepay();
+        }
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

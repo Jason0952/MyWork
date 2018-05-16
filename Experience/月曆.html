@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+  <title>月曆</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+</head>
+
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <button type="button" id="beforemonth" class="btn btn-link" style="margin-left:4em">上一個月</button>
+      </div>
+      <div class="col" id="month" style="margin-left:11em">
+      </div>
+      <div class="col">
+        <button type="button" id="nextmonth" class="btn btn-link" style="margin-left:5.5em">下一個月</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1" id="year" style="margin-left:30.8em">
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col" style="margin-left:2em">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+          </thead>
+          <tbody id="tablebody">            
+            <!-- Modal -->
+            <div class="modal fade" id="modelid" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="form-group">
+                    <textarea class="form-control" id="input" rows="5"></textarea>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" id="save" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var tablebody = document.getElementById("tablebody");
+    var beforemonth = document.getElementById("beforemonth");
+    var nextmonth = document.getElementById("nextmonth");
+
+    var gettoday = new Date();
+    var getmonth = gettoday.getMonth();
+
+    createcalender();
+
+    function createcalender() {
+      document.getElementById("month").innerHTML = gettoday.getMonth() + 1 + "月";
+      document.getElementById("year").innerText = gettoday.getFullYear();
+      gettoday.setDate(1);
+
+      for (var i = 0; i < 5; i++) {
+        var tr = document.createElement("tr");
+        while (gettoday.getDay() != 0) {
+          gettoday.setDate(gettoday.getDate() - 1);
+        }
+        for (var j = 0; j < 7; j++) {
+          var tabletd = document.createElement("td");
+          tabletd.style = "height:100px";
+          tabletd.innerText = gettoday.getDate();
+          if (gettoday.getMonth() != getmonth) {
+            tabletd.style = "color:gray;";
+          }
+          tr.appendChild(tabletd);
+          gettoday.setDate(gettoday.getDate() + 1);
+        }
+        tablebody.appendChild(tr);
+      }
+    }
+
+    function clear() {
+      while (tablebody.hasChildNodes()) {
+        tablebody.removeChild(tablebody.firstChild);
+      }
+    }
+
+    nextmonth.onclick = function (e) {
+      clear();
+      createcalender();
+    }
+
+    beforemonth.onclick = function (e) {
+      gettoday.setMonth(gettoday.getMonth() - 2);
+      clear();
+      createcalender();
+    }
+
+    //行事曆
+    
+    var btn
+    var td = document.getElementsByTagName("td");
+    for (var i = 0; i < td.length; i++) {
+      var button = td[i];
+      button.onclick = function () {
+        btn = event.srcElement;
+        $('#modelid').modal('show');
+      }
+    }
+
+    document.getElementById("save").onclick = function(){
+      var text = document.getElementById("input").value;
+      btn.innerText +=  "\n" + text;
+    };
+  </script>
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

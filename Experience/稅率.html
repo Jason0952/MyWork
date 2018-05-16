@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+        crossorigin="anonymous">
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-9 text-center">
+                <h3>稅額試算</h3>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="txtNetIncome" class="col-2 col-form-label text-right">所得淨額</label>
+            <div class="input-group col-6">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                </div>
+                <input type="text" class="form-control" id="txtNetIncome" />
+            </div>
+            <div class="col-1">
+                <button class="btn btn-primary">
+                    <i class="fas fa-calculator"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtTaxRate" class="col-3 col-form-label text-right">稅率</label>
+        <div class="input-group col-5">
+            <input type="text" class="form-control" readonly maxlength="5" id="txtTaxRate" />
+            <div class="input-group-append">
+                <div class="input-group-text">
+                    <i class="fas fa-percent"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtTaxAdjustment" class="col-3 col-form-label text-right">累進差額</label>
+        <div class="input-group col-5">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+            <input type="text" class="form-control" readonly id="txtTaxAdjustment" />
+        </div>
+    </div>
+    </div>
+    <div class="form-group row">
+        <label for="txtTaxAmount" class="col-3 col-form-label text-right">應納稅額</label>
+        <div class="input-group col-5">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+            </div>
+            <input type="text" class="form-control" readonly d="txtTaxAmount" />
+        </div>
+    </div>
+
+    <script>
+        var rate = function (x) {
+            if (x < 10000) return 0.001;
+            if (x >= 10000 && x < 100000) return 0.002;
+            if (x >= 100000 && x < 1000000) return 0.003;
+
+            return 0.004;
+        }
+
+        var savings = [600, 52000, 103920, 892810, 4928298];
+
+        function getRates(savings, rating) {
+            for (var saving of savings) {
+                var rate = rating(saving);
+                document.write(saving + "'s rate: " + rate);
+                document.write("<br />");
+            }
+        }
+
+        getRates(savings, rate);
+        document.write("<br />");
+
+        var taxArray = [
+            {rate: 0.05,amountFrom: 0,amountTo: 540000,adj: 0},
+            {rate: 0.12,amountFrom: 540000,amountTo: 1210000,adj: 37800},
+            {rate: 0.20,amountFrom: 1210000,amountTo: 2420000,adj: 134600},
+            {rate: 0.30,amountFrom: 2420000,amountTo: 4530000,adj: 376600},
+            {rate: 0.40,amountFrom: 4530000,amountTo: 10310000,adj: 829600},
+            {rate: 0.45,amountFrom: 10310000,amountTo: 0,adj: 1345100}
+        ];
+
+        var amt = 3693019;
+        var r = 0.0;
+        var adj = 0;
+        for (var item of taxArray) {
+            if (item.amountFrom > item.amountTo) {
+                if (amt >= item.amountFrom) {
+                    r = item.rate;
+                    adj = item.adj;
+                    break;
+                } else {
+                    r = -1;
+                    adj = -1;
+                    break;
+                }
+            } else {
+                if (amt >= item.amountFrom && amt < item.amountTo) {
+                    r = item.rate;
+                    adj = item.adj;
+                    break;
+                }
+            }
+        }
+
+        document.write("amt=" + amt + ", rate=" + r + ", adj=" + adj);
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

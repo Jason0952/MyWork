@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>計算</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>請選擇計算方法:</h1>
+                <div class="btn-group" data-toggle="buttons">
+                    <label class="btn btn-info">
+                        <input type="radio" name="a" id="unitCF" autocomplete="off"> 攝氏轉華氏
+                    </label>
+                    <label class="btn btn-info">
+                        <input type="radio" name="a" id="unitFC" autocomplete="off"> 華氏轉攝氏
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <h1>請點選數字</h1>
+        <div class="row">
+            <div class="col-1">
+                <button type="button" class="btn btn-primary btn-block">1</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary btn-block">2</button>
+            </div>
+            <div class="col-1">
+                <button type="button" class="btn btn-primary btn-block">3</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">4</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">5</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">6</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">7</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">8</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">9</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">.</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">0</button>
+            </div>
+            <div class="col-1 mt-1">
+                <button type="button" class="btn btn-primary btn-block">space</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3 mt-2">
+                <div class="form-group">
+                    <input id="txt" class="form-control" placeholder="輸入的數字" aria-describedby="helpId">
+                </div>
+            </div>
+            <div class="col-9">
+                <button id="change" type="button" class="btn btn-success mt-2">轉換</button>
+                <button id="Clean" type="button" class="btn btn-danger mt-2">清除</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="form-group">
+                    <label for="">
+                        <h1>轉換結果:</h1>
+                    </label>
+                    <input id="result" type="text" class="form-control" placeholder="結果" aria-describedby="helpId">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // var count = document.getElementsByTagName("button").length;
+
+        // for(var i = 0;i < count;i ++)
+        // {
+        //     console.log(document.getElementsByTagName("button")[i].innerText);
+        // }
+        // document.getElementsByTagName("button")[2].style.backgroundColor = "#ff2002";
+    </script>
+
+    <script>
+        var buttons = document.getElementsByTagName("button");
+
+        for (var i = 0; i < buttons.length; i++) {
+            var button = buttons[i];
+            button.onclick = function () {
+                var btn = event.srcElement;
+                document.getElementById("txt").value += btn.innerText;
+            }
+        }
+
+        var optCF = document.getElementById("unitCF");
+        var optFC = document.getElementById("unitFC");
+        var CTF = document.getElementById("change");
+
+        CTF.onclick = function () {
+            if (optCF.checked) {
+                var C1 = document.getElementById("txt").value;
+                var F1 = (C1 * 1.8) + 32;
+                document.getElementById("result").value = F1;
+            } else if (optFC.checked) {
+                var F2 = document.getElementById("txt").value;
+                var C2 = (F2 - 32) / 1.8;
+                document.getElementById("result").value = C2;
+            }
+        }
+
+        var cmdClean = document.getElementById("Clean");
+        cmdClean.onclick = function () {
+            document.getElementById("txt").value = "";
+            document.getElementById("result").value = "";
+        }
+    </script>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,187 @@
+body { 
+    font-size: 15px;
+    line-height: 1.4em;
+    font-family: sans-serif;
+    color: #333; 
+}
+
+.main {
+    width: 650px;
+    float: left;
+    padding-bottom: 30px;
+    margin-left: 50px;
+}
+
+.main1{
+    width: 700px;
+    float: left;
+    padding-bottom: 30px;
+    margin-left: 500px;
+}
+
+.side{
+    width: 220px;
+    float: left;
+    padding-bottom: 30px;
+}
+
+.footer{
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0px 40px;
+    clear: both;
+}
+
+a {
+    color: #009ced; 
+    text-decoration: none;
+}
+
+a:hover { 
+    color: #008ad1; 
+    text-decoration: underline; 
+}
+
+.container{
+    width: 940px;
+    margin: 0 auto;
+}
+
+h1.logo a{
+    display: block;
+    width: 376px;
+    height: 200px;
+    background: url('../images/doit.png') no-repeat; 
+    white-space: nowrap;
+    text-indent: 110%;
+    overflow: hidden;
+}
+
+.header .container{
+    position: relative;
+}
+
+.header .slogan{
+    position: absolute;
+    top: 50px;
+    right: 100px;
+}
+
+.slogan strong{
+    font-size: 1.5em;
+    color: red;
+}
+
+.main-menu{
+    background-color: blue;
+    margin-bottom: 20px; /*main-menu與瀏覽器邊框的距離*/
+    overflow: auto; 
+}
+
+.main-menu ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.main-menu ul li{
+    float: left;
+    width: 25%;
+}
+
+.main-menu ul li a{
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-menu ul li a:hover{
+    background: #ff555d;
+}
+
+.headline{
+    border: #ddd 1px solid; 
+    padding: 10px; 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+    line-height: 1.5em;
+    border: #ddd 1px solid; 
+    padding: 10px 10px 10px 220px; 
+    margin-bottom: 20px; 
+    font-size: 16px; 
+    line-height: 1.5em;     
+    position: relative; min-height: 150px;
+}
+
+.headline img { 
+    position: absolute; 
+    left: 10px; 
+}
+
+
+.headline h2{
+    margin-top: 0; 
+    font-size: 1.5em;
+}
+
+.headline .more { 
+    display: block; 
+    text-align: right; 
+}
+
+ul.news-list { 
+    list-style: none; 
+    margin: 0; 
+    padding: 0; 
+} 
+
+.news { 
+    box-sizing: border-box; 
+    width: 340px; 
+    height: 250px; 
+    overflow: hidden; 
+    border: #ddd 1px solid; 
+    padding: 10px; 
+    margin-bottom: 20px;
+    float: left;
+}
+
+.news:nth-child(odd) { 
+    margin-right: 20px; 
+}
+
+.news h2 { 
+    margin-top: 0; 
+    line-height: 1.2em; 
+} 
+.news .img { 
+    float: left;
+    margin: 0 10px 10px 0; 
+}
+
+.side-title { 
+    padding-bottom: 30px; 
+    border-bottom: #ff555d 4px solid; 
+} 
+
+.top-news { 
+    padding-left: 30px; 
+} 
+
+.top-news li { 
+    line-height: 1.5em; 
+    padding-bottom: 5px; 
+}
+
+a.back-top { 
+    position: fixed; 
+    bottom: 150px; 
+    right: 0; 
+    background: #ff8086; 
+    padding: 10px 20px; 
+    font-size: 2em; color: #fff; 
+}

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <h1>生命靈數計算:</h1>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <input type="text" class="form-control" name="" id="birthyear" aria-describedby="helpId" placeholder="">
+            </div>
+            <h3>年</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="" id="birthmonth" aria-describedby="helpId" placeholder="">
+            </div>
+            <h3>月</h3>
+            <div class="form-group">
+                <input type="text" class="form-control" name="" id="birthday" aria-describedby="helpId" placeholder="">
+            </div>
+            <h3>日</h3>
+            <button type="button" id="cmdCalculate" class="btn btn-success" style="width: 70px;height: 40px;">計算</button>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for=""></label>
+                <textarea class="form-control" name="" id="constellation" style="width: 5em;" rows="1"></textarea>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label for=""></label>
+                <textarea class="form-control" name="" id="lifetext" style="width: 47.9em;" rows="5"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="./生命靈數.js"></script>
+
+    <script>
+        $(function () {
+            $("#cmdCalculate").click(function () {
+                var year = $("#birthyear");
+                var month = $("#birthmonth");
+                var day = $("#birthday");
+
+                var Calculate = new NumerologyCalculator(year, month, day);
+                
+
+                $.ajax({
+                    url: "https://gist.githubusercontent.com/regionbbs/a4633c99d4f3d73c41538134b0b62162/raw/9b81dd8ae2bbe0b088d54c2118e5eb2d1021313f/" + Calculate.getAstrologyConstellationName() + ".json",
+                    type: "GET"
+                }).done(function (data) {
+                    var o = JSON.parse(data);
+                    $("#constellation").text(o.name);
+                    $("#lifetext").text(o.lookup);
+                })
+            });
+        });
+    </script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
