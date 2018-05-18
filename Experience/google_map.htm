@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<title>Google Maps JavaScript API Example</title>
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAG_4i2swR3KOd-nGYrlrt8RTkyS8SRe_kYPTAbwTumvAqao01PRRUcCtCzTBnNH2kRURGR8RhQQoZ3w"
+      type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+
+function load() {
+	if (GBrowserIsCompatible()) {
+		var myMap = new GMap2(document.getElementById("my_map"));
+		var myLatLng = new GLatLng(25.04763902653048, 121.51715755462646);
+		myMap.setCenter(myLatLng, 15);
+		myMap.addControl(new GLargeMapControl());
+		document.getElementById('inLatLng').value = myLatLng.toString();
+		
+		var myMarker = new GMarker( myLatLng );
+		myMap.addOverlay( myMarker );
+		
+		GEvent.addListener(myMap, "click", function( overlay, point ){
+								if(point){
+									//設定標註座標
+									myMarker.setLatLng(point);
+									document.getElementById('inLatLng').value = point.toString();
+								}
+							});
+
+	}
+}
+
+//]]>
+</script>
+</head>
+<body onload="load()" onunload="GUnload()">
+    LatLng︰<input id="inLatLng" name="inLatLng" type="text" size="40" value="" /><p>
+	<div id="my_map" style="width: 500px; height: 500px"></div>
+</body>
+</html>
