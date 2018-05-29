@@ -1,10 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Title</title>
     <style>
-      .li>a:hover{
-        background-color: black
+        .li>a:hover {
+            background-color: red;
+            font-family: "DFKai-SB";
+        }
+
+        #Footer {
+            height: 100px;
+            position: relative;
+            margin-top: -100px;
+        }
+
+        .back-top {
+            position: fixed;
+            bottom: 150px;
+            right: 0;
+            background: #ff8086;
+            padding: 10px 20px;
+            font-size: 2em;
+            color: #fff;
         }
     </style>
     <!-- Required meta tags -->
@@ -12,51 +30,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  </head>
-  <body>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
     <div class="container-fluid">
-      <div class="row sticky-top" style="background-color: black">
-        <h1 style="color: white;margin-left: 3em;">JC(Jason Chang)的作品專欄</h1>
-      </div>
+        <div class="row sticky-top" style="background-color: #0066FF;font-family: DFKai-SB;">          
+                <!-- <a class="btn" style="background-color: black" data-toggle="collapse" href="#contentId" aria-expanded="false" aria-controls="contentId">
+                    <h1><i class="fas fa-minus-square"></i></h1>
+                </a> -->
+            
+            <div class="collapse" id="contentId">
+                <div class="card">
+                    <img class="card-img-top" src="holder.js/100x180/" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">Title</h4>
+                        <p class="card-text">Text</p>
+                    </div>
+                </div>
+            </div>
+            <h1 style="color: white;margin-left: 3em;">JC(Jason Chang)的作品專欄</h1>
+        </div>
     </div>
-    <div class="container">
-      <div class="row" style="height: 700px;width: 150px;background-color: #FFE4B5;margin-right: 30px">
-        <ul class="nav justify-content-center|justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/肉球新聞/.vs/paw-news/index.html">肉球新聞首頁</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/月曆.html">月曆</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/稅率.html">稅率計算</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/蝦皮拍賣.html">蝦皮拍賣</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/貸款.html">貸款</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/bootstrap排版.html">bootstrap排版</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/猜數字.html">猜數字</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/計算溫度.html">計算溫度</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="Experience/google_map.htm">Google Map</a>
-            </li>
-        </ul>
-      </div>
+    <div class="container-fluid">
+        <div class="row">
+            <img src='https://placehold.it/140x150' alt='' />
+            <div class="col">
+                <h4>我喜歡寫程式，不單單只是因為程式可以執行而感到喜悅，還有因為能知道Bug的部分在哪邊，並且努力去克服它。<br/>
+                    從中除錯、並且還可以跟程式能力較強的人討論程式碼該如何寫會更好更簡潔有力，雖然程式碼執行的成果會一樣，但是不同的想法，會思考出不同的程式碼，這樣就能學習他的思考邏輯<br/></h4>
+                <div class="row">
+                    <h2 style="margin-left: 14px;margin-top: 30px;">
+                        <i class="fab fa-github"></i>
+                    </h2>
+                    <h2 style="margin-left: 14px;margin-top: 30px;">
+                        <i class="fas fa-envelope"></i>
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 12px;">
+            <div class="col" style="position: fixed;">
+                <h2>作品展示</h2>
+            </div>
+        </div>
+        <div class="row" style="height: 400px;margin-top: 40px">
+            <div class="col-1">
+            </div>
+            <div class="col-1" style="height: 400px;background-color: #FFE4B5;margin-right: 30px;margin-top: 20px;position: fixed">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/肉球新聞/.vs/paw-news/index.html">肉球新聞</br>
+                        </a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/月曆.html">月曆</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/稅率.html">稅率計算</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/蝦皮拍賣.html">蝦皮拍賣</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/貸款.html">貸款</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/bootstrap排版.html">bootstrap</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/猜數字.html">猜數字</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/計算溫度.html">計算溫度</a>
+                    </li>
+                    <li class="nav-item" style="font-family: DFKai-SB">
+                        <a class="nav-link active" href="Experience/google_map.htm">GoogleMap</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-3">
+                <h2 style="font-style: italic;font-weight: bold;font-family: DFKai-sb;">Trello</h2>
+                <img src="作品集截圖/bootstrap.png" alt="無法顯示" style="width: 290px;height: 300px;">
+                <h2 style="font-style: italic;font-weight: bold;font-family: DFKai-sb;">Google Map</h2>
+                <img src="作品集截圖/Map.png" alt="無法顯示" style="width: 290px;height: 300px;">
+                <h2 style="font-style: italic;font-weight: bold;font-family: DFKai-sb;">C#LED燈</h2>
+                <img src="作品集截圖/數字LED燈.png" alt="無法顯示" style="width: 290px;height: 300px;">
+            </div>
+            <div class="col-3">
+                <h2 style="font-style: italic;font-weight: bold;font-family: DFKai-sb;">溫度轉換改版</h2>
+                <img src="作品集截圖/溫度計算.png" alt="無法顯示" style="width: 300px;height: 300px;">
+            </div>
+            <div class="col-3">
+                <h2 style="font-style: italic;font-weight: bold;font-family: DFKai-sb;">月曆</h2>
+                <img src="作品集截圖/月曆3.png" alt="無法顯示" style="width: 300px;height: 300px;">
+                <img src="作品集截圖/月曆2.png" alt="無法顯示" style="width: 300px;height: 300px;">
+                <img src="作品集截圖/月曆1.png" alt="無法顯示" style="width: 300px;height: 300px;">
+            </div>
+            <div class="col-12" style="background-color: black">
+                <h1 style="font-family: DFKai-sb;color: white;margin-left: 690px">Build School</h1>
+            </div>
+        </div>
     </div>
+    <a href="#" class="back-top">top</a>
+
+    <script>
+        $('#navId a').click(e => {
+            e.preventDefault();
+            $(this).tab('show');
+        });
+    </script>
+    <script>
+        var Arraycolor = new Array("#00FF66", "#FFFF99", "#99CCFF", "#FFCCFF", "#FFCC99", "#00FFFF", "#FFFF00",
+            "#FFCC00", "#FF00FF");
+        var n = 0;
+
+        function turncolors() {
+            n++;
+            if (n == (Arraycolor.length - 1)) {
+                n = 0;
+            }
+            document.bgColor = Arraycolor[n];
+            setTimeout("turncolors()", 1000);
+        }
+        turncolors();
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+</body>
+
 </html>
